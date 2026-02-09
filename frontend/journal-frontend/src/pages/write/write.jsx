@@ -3,9 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
-// Add fonts to whitelist
 const Font = Quill.import("attributors/style/font");
-const fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana"];
+const fonts = ["Roboto", "Open Sans", "Lato", "Montserrat"];
 Font.whitelist = fonts;
 Quill.register(Font, true);
 
@@ -13,20 +12,41 @@ const Write = () => {
   const editorRef = useRef(null);
   const quillRef = useRef(null);
   const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
+  const [theme, setTheme] = useState("light");
+
+  // Use a ref to store the current theme so the Quill handler 
+  // can always access the most up-to-date value without re-initializing
+  const themeRef = useRef(theme);
+  useEffect(() => {
+    themeRef.current = theme;
+  }, [theme]);
+
+  const toggleTheme = () => {
+    // Functional update ensures we always have the latest state
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   useEffect(() => {
-    if (!quillRef.current) {
+    if (!quillRef.current && editorRef.current) {
       quillRef.current = new Quill(editorRef.current, {
         theme: "snow",
         placeholder: "Write something...",
         modules: {
-          toolbar: [
-            [{ font: fonts }],
-            ["bold", "italic", "underline", "strike"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["image", "video"],
-            ["clean"],
-          ],
+          toolbar: {
+            container: [
+              [{ font: fonts }],
+              ["bold", "italic", "underline", "strike"],
+              [{ list: "ordered" }, { list: "bullet" }],
+              ["image", "video"],
+              ["clean"],
+              ["theme"] // Custom button name
+            ],
+            handlers: {
+              // We call toggleTheme directly; React will handle the state update
+              theme: toggleTheme,
+            },
+          },
         },
       });
 
@@ -36,26 +56,39 @@ const Write = () => {
     }
   }, []);
 
-  return (
-    <div className="write-container">
-      <div className="editor-card">
+  // Handle visual updates (DOM classes and Icon changes)
+  useEffect(() => {
+    const container = document.querySelector(".write-container");
+    const toolbar = quillRef.current?.getModule("toolbar");
+    const themeButton = toolbar?.container.querySelector(".ql-theme");
 
-        {/* Quill Editor */}
+    if (theme === "dark") {
+      container?.classList.add("dark");
+      if (themeButton) themeButton.innerHTML = "🌙";
+    } else {
+      container?.classList.remove("dark");
+      if (themeButton) themeButton.innerHTML = "☀️";
+    }
+  }, [theme]);
+
+  return (
+    <div className={`write-container ${theme}`}>
+      <div className="editor-card">
+        <input
+          type="text"
+          className="category-input"
+          placeholder="Enter category..."
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+
         <div ref={editorRef} className="quill-editor" />
 
-        {/* Actions */}
         <div className="actions">
-          <button
-            className="draft-btn"
-            onClick={() => localStorage.setItem("draft", content)}
-          >
+          <button className="draft-btn" onClick={() => localStorage.setItem("draft", content)}>
             Save as Draft
           </button>
-
-          <button
-            className="post-btn"
-            onClick={() => console.log(content)}
-          >
+          <button className="post-btn" onClick={() => console.log({ content, category })}>
             Post
           </button>
         </div>

@@ -15,6 +15,15 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+.category-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
 /* Quill editor wrapper */
 .quill-editor {
   margin-top: 10px;
@@ -68,31 +77,74 @@
   background: #5f8fc7;
 }
 
+
 /* Quill Font Dropdown Styles */
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Arial]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Arial]::before {
-  content: 'Arial';
-  font-family: 'Arial', sans-serif;
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Roboto]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Roboto]::before {
+  content: 'Roboto';
+  font-family: 'Roboto', sans-serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Courier New"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Courier New"]::before {
-  content: 'Courier New';
-  font-family: 'Courier New', monospace;
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Open Sans"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Open Sans"]::before {
+  content: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Georgia]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Georgia]::before {
-  content: 'Georgia';
-  font-family: 'Georgia', serif;
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Lato]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Lato]::before {
+  content: 'Lato';
+  font-family: 'Lato', sans-serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Times New Roman"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Times New Roman"]::before {
-  content: 'Times New Roman';
-  font-family: 'Times New Roman', serif;
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Montserrat]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Montserrat]::before {
+  content: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=Verdana]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=Verdana]::before {
-  content: 'Verdana';
-  font-family: 'Verdana', sans-serif;
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Slabo 27px"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Slabo 27px"]::before {
+  content: 'Slabo 27px';
+  font-family: 'Slabo 27px', serif;
 }
 
+/* Dark Theme */
+.write-container.dark {
+  background: #2d3748;
+}
 
+.write-container.dark .editor-card {
+  background: #1a202c;
+  color: #fff;
+}
+
+.write-container.dark .category-input {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #fff;
+}
+
+.write-container.dark .ql-toolbar {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+.write-container.dark .ql-container {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #fff;
+}
+
+.write-container.dark .ql-snow .ql-stroke {
+  stroke: #fff;
+}
+
+.write-container.dark .ql-snow .ql-picker-label {
+  color: #fff;
+}
+
+.write-container.dark .draft-btn {
+  border-color: #4a5568;
+  color: #fff;
+}
+
+.write-container.dark .post-btn {
+  background: #4a5568;
+}
