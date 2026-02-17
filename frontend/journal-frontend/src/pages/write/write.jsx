@@ -2,11 +2,13 @@ import "./write.css";
 import { useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
+import Sidebar from "../../components/write/sidebar/sidebar";
 
 const Font = Quill.import("attributors/style/font");
 const fonts = ["Roboto", "Open Sans", "Lato", "Montserrat"];
 Font.whitelist = fonts;
 Quill.register(Font, true);
+
 
 const Write = () => {
   const editorRef = useRef(null);
@@ -72,28 +74,31 @@ const Write = () => {
   }, [theme]);
 
   return (
-    <div className={`write-container ${theme}`}>
-      <div className="editor-card">
-        <input
-          type="text"
-          className="category-input"
-          placeholder="Enter category..."
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
+    <>
+      <Sidebar />
+      <div className={`write-container ${theme}`}>
+        <div className="editor-card">
+          <input
+            type="text"
+            className="category-input"
+            placeholder="Enter category..."
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
 
-        <div ref={editorRef} className="quill-editor" />
+          <div ref={editorRef} className="quill-editor" />
 
-        <div className="actions">
-          <button className="draft-btn" onClick={() => localStorage.setItem("draft", content)}>
-            Save as Draft
-          </button>
-          <button className="post-btn" onClick={() => console.log({ content, category })}>
-            Post
-          </button>
+          <div className="actions">
+            <button className="draft-btn" onClick={() => localStorage.setItem("draft", content)}>
+              Save as Draft
+            </button>
+            <button className="post-btn" onClick={() => console.log({ content, category })}>
+              Post
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

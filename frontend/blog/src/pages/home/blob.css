@@ -1,0 +1,39 @@
+.blob-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.blob {
+  width: 100%;
+  max-width: 500px;
+  min-height: 350px;
+  background: #f9f9f9;
+  border-radius: 50% 40% 60% 30% / 40% 60% 30% 50%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.blob:hover {
+  transform: scale(1.02);
+}
+
+.blob-content {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blob {
+    max-width: 90%;
+    padding: 30px;
+  }
+}
