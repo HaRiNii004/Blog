@@ -1,0 +1,122 @@
+.blogs-page {
+  height: 100vh;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+.blogs-left {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* BLOG GRID */
+.blogs-grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Blog Card */
+.blog-card {
+  background: #f0f0f0;
+  width: calc(33.33% - 14px);
+  min-width: 200px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.blog-image {
+  height: 60%;
+  background: #d9d9d9;
+}
+
+.blog-content {
+  flex: 1;
+  background: #cfcfcf;
+}
+
+/* RIGHT SIDE */
+.blogs-right {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.right-box {
+  background: #e0e0e0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-box.small {
+  height: 80px;
+}
+
+.right-box.medium {
+  flex: 1;
+}
+
+/* Scrollbar clean look */
+.blogs-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.blogs-grid::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 1024px) {
+  .blogs-page {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .blogs-right {
+    flex-direction: row;
+  }
+
+  .right-box {
+    flex: 1;
+    height: 150px;
+  }
+
+  .blogs-grid {
+    overflow: visible;
+  }
+
+  .blog-card {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-card {
+    width: 100%;
+  }
+
+  .blogs-right {
+    flex-direction: column;
+  }
+}

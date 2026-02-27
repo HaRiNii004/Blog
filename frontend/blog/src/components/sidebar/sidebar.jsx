@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { Home, BookOpen, User, Moon } from "lucide-react";
 import "./sidebar.css";
 
@@ -8,23 +7,23 @@ const Sidebar = () => {
     <>
       {/* LEFT SIDE */}
       <div className="sidebar left">
-        <NavLink to="/" className="sidebar-item">
+        <a href="#home" className="sidebar-item">
           <Home size={22} />
           <span className="tooltip right-tip">Home</span>
-        </NavLink>
+        </a>
 
-        <NavLink to="/blogs" className="sidebar-item">
+        <a href="#blogs" className="sidebar-item">
           <BookOpen size={22} />
           <span className="tooltip right-tip">Blogs</span>
-        </NavLink>
+        </a>
       </div>
 
       {/* RIGHT SIDE */}
       <div className="sidebar right">
-        <NavLink to="/about" className="sidebar-item">
+        <a href="#contact" className="sidebar-item">
           <User size={22} />
-          <span className="tooltip left-tip">About</span>
-        </NavLink>
+          <span className="tooltip left-tip">Contact</span>
+        </a>
 
         <div className="sidebar-item">
           <Moon size={22} />
