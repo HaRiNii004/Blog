@@ -1,9 +1,4 @@
-/* .scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap');
 
 * {
   margin: 0;
@@ -13,4 +8,8 @@
 
 html, body {
   height: 100%;
+}
+
+.scroll-container {
+  padding-top: 64px; /* offsets the fixed topbar */
 }

@@ -1,0 +1,67 @@
+.site-topbar {
+  position: fixed;
+  top: 3%;
+  left: 2%;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  background: rgba(191, 180, 158, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(47, 59, 47, 0.1);
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.site-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2f3b2f;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.site-brand span {
+  color: #a98946;
+}
+
+.site-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.site-nav-link {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2f3b2f;
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+
+.site-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #a98946;
+  transition: width 0.25s ease;
+}
+
+.site-nav-link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .site-topbar {
+    padding: 0 20px;
+  }
+  .site-nav {
+    gap: 18px;
+  }
+}

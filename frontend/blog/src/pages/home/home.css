@@ -1,22 +1,197 @@
-.engulf-container {
-  height: fit-content;
-}
-
-.home-container {
-  width: 100%;
+.home-page {
+  padding: 110px 60px 60px;
+  max-width: 1300px;
+  margin: 0 auto;
   display: flex;
-  height: fit-content;
+  align-items: flex-start;
+  gap: 60px;
 }
 
+/* ===== LEFT: About Me sidebar ===== */
+.about-sidebar {
+  flex: 0 0 500px;
+  position: sticky;
+  top: 110px;
+  padding-bottom: 40px;
+  border-right: 1px solid rgba(47, 59, 47, 0.1);
+  padding-right: 40px;
+}
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .home-container {
+.hero-eyebrow {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #a98946;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+  color: #2f3b2f;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.hero-title span {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.1em;
+  color: #a98946;
+}
+
+.hero-bio {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a4a44;
+}
+
+.hero-bio a {
+  color: #2f3b2f;
+  text-decoration: underline;
+  text-decoration-color: #a98946;
+  text-underline-offset: 3px;
+}
+
+.about-extra {
+  margin-top: 32px;
+}
+
+.about-extra h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8a8578;
+  margin-bottom: 12px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.about-tags li {
+  font-size: 0.75rem;
+  color: #a98946;
+  background: rgba(169, 137, 70, 0.12);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ===== RIGHT: Preview section ===== */
+.preview-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.preview-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: #2f3b2f;
+}
+
+.preview-view-all {
+  font-size: 0.9rem;
+  color: #a98946;
+  text-decoration: none;
+}
+
+.preview-status {
+  color: #8a8578;
+}
+
+/* Pinterest-style masonry using CSS columns */
+.preview-masonry {
+  column-count: 2;
+  column-gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .preview-masonry {
+    column-count: 3;
+  }
+}
+
+.preview-card {
+  background: #fff;
+  border: 1px solid rgba(47, 59, 47, 0.08);
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  break-inside: avoid; /* keeps a card from splitting across columns */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(47, 59, 47, 0.08);
+}
+
+.preview-tag {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #a98946;
+  background: rgba(169, 137, 70, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.preview-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  color: #2f3b2f;
+}
+
+.preview-card p {
+  font-size: 0.9rem;
+  color: #6b6a63;
+  line-height: 1.5;
+}
+
+.preview-card time {
+  font-size: 0.75rem;
+  color: #a5a196;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .home-page {
     flex-direction: column;
+    padding: 100px 24px 40px;
+    gap: 30px;
   }
 
+  .about-sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(47, 59, 47, 0.1);
+    padding-bottom: 30px;
+  }
+
+  .preview-masonry {
+    column-count: 2;
+  }
 }
 
-@media (max-width: 480px) {
- 
+@media (max-width: 600px) {
+  .preview-masonry {
+    column-count: 1;
+  }
 }
