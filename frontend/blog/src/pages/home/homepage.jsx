@@ -1,15 +1,18 @@
 import React from "react";
 import "./home.css";
-import Blob from "./blob";
 import TopBar from "./topbar";
+import FilmStrip from "./filmstrip/filmstrip";
+import image1 from "../../assets/download (2).jpg";
+import image2 from "../../assets/download (3).jpg";
+import image3 from "../../assets/download (4).jpg";
+import video1 from "../../assets/WhatsApp Video 2026-06-26 at 3.56.37 PM.mp4";
 
-const images = [
-  "https://picsum.photos/300/300?1",
-  "https://picsum.photos/300/300?2",
-  "https://picsum.photos/300/300?3",
-  "https://picsum.photos/300/300?4",
-  "https://picsum.photos/300/300?5",
-];
+const mediaItems = [
+  {type: 'image' , src: image1},
+  {type: 'image' , src: image2},
+  {type: 'image' , src: image3},
+  {type: 'video' , src: video1},
+]
 
 const Home = () => {
   return (
@@ -18,24 +21,9 @@ const Home = () => {
       <TopBar />
 
       <div className="home-container">
-        <div className="photos-container">
-          {images.map((img, index) => (
-            <div className="polaroid" key={index}>
-              <img src={img} alt="memory" />
-              <p>Memory {index + 1}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="about-container">
-          <Blob>
-            <h2>About Me</h2>
-            <p>
-              Welcome to my little corner of the internet.
-              I write about tech, thoughts, creativity, and life.
-            </p>
-          </Blob>
-        </div>
+       
+        {/* <FilmStrip items={mediaItems}/> */}
+      
       </div>
       </div>
     </>

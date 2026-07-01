@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
-const postRoutes = require('./routes/journalRoutes.js');
+const postRoutes = require('./controllers/journalRoutes.js');
 
 const app = express();
 

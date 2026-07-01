@@ -29,9 +29,9 @@ const Sidebar = () => {
   const location = useLocation();
 
   const menuItems = [
-    { icon: LayoutDashboard, label: "H writes", path: "/" },
-    { icon: Gauge, label: "Dashboard One", path: "/dash1" },
-    { icon: Gauge, label: "Dashboard Two", path: "/dash2" },
+    { icon: LayoutDashboard, label: "posts", path: "/" },
+    { icon: Layers, label: "Running images", path: "/dash1" },
+    { icon: Gauge, label: "Running quotes", path: "/dash2" },
     { icon: CloudDownload, label: "Downloads", path: "/downloads" },
     { icon: Layers, label: "Projects", path: "/projects" },
   ];
@@ -39,7 +39,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       {/* Top Brand */}
-      <div className="sidebar-brand">CUI</div>
+      <div className="sidebar-brand">H</div>
 
       {/* Menu */}
       <nav className="sidebar-menu">
@@ -51,16 +51,6 @@ const Sidebar = () => {
           />
         ))}
       </nav>
-
-      {/* Bottom Settings */}
-      <div className="sidebar-bottom">
-        <SidebarItem
-          icon={Settings}
-          label="Settings"
-          path="/settings"
-          active={location.pathname === "/settings"}
-        />
-      </div>
     </aside>
   );
 };

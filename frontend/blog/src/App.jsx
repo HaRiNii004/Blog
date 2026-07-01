@@ -3,7 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar/sidebar";
 import Home from "./pages/home/homepage";
-import Blogs from "./pages/blog/blog";
+// import Blogs from "./pages/blog/blog";
+import Aboutme from "./pages/about/about";
 import "./index.css";
 import "./App.css";
 
@@ -19,13 +20,13 @@ function App() {
           <Home />
         </section>
 
-        <section id="blogs">
+        {/* <section id="blogs">
           <Blogs />
-        </section>
-
-        {/* <section id="contact">
-          <Contact />
         </section> */}
+
+        <section id="about">
+          <Aboutme />
+        </section>
       </div>
 
     </>

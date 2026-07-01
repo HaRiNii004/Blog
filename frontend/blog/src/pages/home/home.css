@@ -6,76 +6,8 @@
   width: 100%;
   display: flex;
   height: fit-content;
-
-
-  /* background-image: url("../../../public/homecontainer.jpg"); */
-  /* background: linear-gradient(180deg,
-      rgba(239, 229, 179, 0.9),
-      rgba(234, 210, 162, 0.9),
-      rgba(238, 189, 116, 0.9)),
-    radial-gradient(circle at center,
-      rgba(255, 255, 255, 0.4),
-      transparent 60%); */
-
 }
 
-
-
-
-
-
-
-/* Photos Section */
-.photos-container {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  padding: 40px;
-}
-
-/* Polaroid Style */
-.polaroid {
-  background: white;
-  padding: 10px 15px 30px 15px;
-
-  width: 190px;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-  transform: rotate(-2deg);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.polaroid:nth-child(even) {
-  transform: rotate(3deg);
-}
-
-.polaroid:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
-.polaroid img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.polaroid p {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* About Section */
-.about-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px;
-  width: 100%;
-}
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -83,22 +15,8 @@
     flex-direction: column;
   }
 
-  .photos-container {
-    padding: 40px 20px;
-    order: 2;
-  }
-
-  .about-container {
-    order: 1;
-  }
 }
 
 @media (max-width: 480px) {
-  .polaroid {
-    width: 140px;
-  }
-
-  .polaroid img {
-    height: 140px;
-  }
+ 
 }

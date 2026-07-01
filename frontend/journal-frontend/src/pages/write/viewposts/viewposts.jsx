@@ -1,23 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './viewposts.css';
 import Sidebar from '../../../components/write/sidebar/sidebar';
+import { fetchPosts } from "../../../api/fetchposts";
 
 const ViewPosts = () => {
   const navigate = useNavigate();
   // State to track if we are viewing 'posts' or 'drafts'
   const [activeTab, setActiveTab] = useState('posts');
+  const [posts, setPosts] = useState([]);
 
-  // Mock data - In a real app, this would come from your DB/API
-  const content = [
-    { id: 1, title: 'My First Blog', type: 'posts', category: 'Tech' },
-    { id: 2, title: 'Learning React', type: 'posts', category: 'Dev' },
-    { id: 3, title: 'Draft Idea #1', type: 'drafts', category: 'Life' },
-    { id: 4, title: 'Draft Idea #2', type: 'drafts', category: 'Tech' },
-  ];
 
   // Filter content based on activeTab
-  const filteredItems = content.filter(item => item.type === activeTab);
+  const filteredItems = posts.filter((item) =>
+    activeTab === "posts"
+      ? item.isDraft === false
+      : item.isDraft === true
+  );
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const data = await fetchPosts();
+        setPosts(data);
+      } catch (err) {
+        console.error("Error fetching posts:", err);
+      }
+    };
+
+    getPosts();
+  }, []);
 
   return (
     <>
@@ -64,9 +76,9 @@ const ViewPosts = () => {
           <div className="posts-grid">
             {filteredItems.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="post-card"
-                onClick={() => navigate(`/edit/${item.id}`)}
+                onClick={() => navigate(`/edit/${item._id}`)}
               >
                 <div className="card-placeholder"></div>
                 <p className="card-title">{item.title}</p>
