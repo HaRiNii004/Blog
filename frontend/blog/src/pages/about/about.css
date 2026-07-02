@@ -4,7 +4,8 @@
 =========================================================== */
 .about-page {
   display: grid;
-  grid-template-columns: 1.3fr 1fr; /* left box wider than right column */
+  grid-template-columns: 1.3fr 1fr;
+  /* left box wider than right column */
   gap: 24px;
   padding: 60px 80px;
   min-height: 100vh;
@@ -56,6 +57,7 @@
   gap: 20px;
 }
 
+
 .about-box {
   background: #ececec;
   border-radius: 20px;
@@ -85,7 +87,6 @@
   color: white;
   display: flex;
   flex-direction: column;
-  min-height: 220px;
 }
 
 .music-cover {
@@ -138,7 +139,6 @@
 
 /* Box 3: photo slideshow */
 .photo-box {
-  min-height: 220px;
   padding: 0;
 }
 
@@ -227,6 +227,54 @@
 
 .social-link.gmail {
   background: #ea4335;
+}
+
+.cardswap-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cardswap-lite-container {
+  position: relative;
+  margin: 0 auto;
+}
+
+.cardswap-lite-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111;
+  color: #fff;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.5s ease, top 0.5s ease;
+}
+
+.cardswap-lite-card.is-dropping {
+  transform: translateY(40px) scale(0.9) !important;
+  opacity: 0;
+}
+
+.cardswap-lite-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.cardswap-lite-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  line-height: 1.4;
 }
 
 /* ===========================================================
