@@ -35,15 +35,7 @@ const ViewPosts = () => {
     <>
       <Sidebar />
       <div className="viewposts-container">
-        {/* 1. Create Post Section (Flexbox) */}
-        <div className="create-post-header">
-          <button
-            className="create-btn"
-            onClick={() => navigate('/create-post')}
-          >
-            Create a new post <span className="plus-icon">+</span>
-          </button>
-        </div>
+   
 
         {/* 2. Main Content Container (Flexbox) */}
         <div className="content-box">
@@ -63,13 +55,7 @@ const ViewPosts = () => {
               </button>
             </div>
 
-            <div className="filter-dropdown">
-              <select>
-                <option>Filter by category</option>
-                <option>Tech</option>
-                <option>Dev</option>
-              </select>
-            </div>
+            
           </div>
 
           {/* 3. Grid Container (Flexbox) */}

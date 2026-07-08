@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   Gauge,
   CloudDownload,
+  Plus,
   Layers,
   Settings,
 } from "lucide-react";
@@ -30,10 +31,8 @@ const Sidebar = () => {
 
   const menuItems = [
     { icon: LayoutDashboard, label: "posts", path: "/" },
-    { icon: Layers, label: "Running images", path: "/dash1" },
-    { icon: Gauge, label: "Running quotes", path: "/dash2" },
-    { icon: CloudDownload, label: "Downloads", path: "/downloads" },
-    { icon: Layers, label: "Projects", path: "/projects" },
+    { icon: Plus, label: "create", path: "/createnew" },
+
   ];
 
   return (
