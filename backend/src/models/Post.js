@@ -15,6 +15,10 @@ const postSchema = new mongoose.Schema({
         type: [String], // Array of strings for multiple tags
         default: []
     },
+    frontImage: {
+      type: String,
+      default: "",
+    },
     postingDate: {
         type: Date,
         default: Date.now // Defaults to the current time
@@ -34,7 +38,8 @@ const postSchema = new mongoose.Schema({
     content: {
         type: String, // Stores the blog body (Text, HTML for images/videos)
         required: true
-    }
+    },
+    
 }, {
     // This option automatically adds 'createdAt' and 'updatedAt' fields
     // 'updatedAt' will update whenever you edit the post

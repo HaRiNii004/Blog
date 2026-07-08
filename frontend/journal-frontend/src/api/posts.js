@@ -12,11 +12,9 @@ export const createPost = (postData) => api.post("/api/posts", postData);
 // keep building the UI without the backend being ready.
 export const uploadImage = async (file) => {
   // Real version (once backend exists) will look like:
-  // const formData = new FormData();
-  // formData.append("image", file);
-  // const res = await api.post("/api/upload", formData);
-  // return res.data.url;
+  const formData = new FormData();
+  formData.append("image", file);
+  const res = await api.post("/api/upload", formData);
+  return res.data.url;
 
-  await new Promise((r) => setTimeout(r, 300));
-  return URL.createObjectURL(file);
 };

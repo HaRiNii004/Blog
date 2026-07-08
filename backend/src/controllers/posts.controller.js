@@ -1,4 +1,4 @@
-const Post = require("../models/Post.model");
+const Post = require("../models/Post.js");
 const asyncHandler = require("../utils/asyncHandler");
 
 exports.createPost = asyncHandler(async (req, res) => {
