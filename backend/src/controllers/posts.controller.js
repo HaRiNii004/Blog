@@ -12,6 +12,14 @@ exports.getPosts = asyncHandler(async (req, res) => {
   res.json(posts);
 });
 
+exports.getPostById = asyncHandler(async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  if (!post) {
+    return res.status(404).json({ error: "Post not found" });
+  }
+  res.json(post);
+});
+
 exports.updatePost = asyncHandler(async (req, res) => {
   const updated = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.json(updated);

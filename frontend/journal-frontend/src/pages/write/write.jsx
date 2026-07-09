@@ -1,10 +1,11 @@
 import "./write.css";
 import { useEffect, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import Sidebar from "../../components/write/sidebar/sidebar";
-import { createPost, uploadImage } from "../../api/posts";
+import { createPost, uploadImage, getPostById, updatePost, deletePost } from "../../api/posts";
 import toast from "react-hot-toast";
 
 
@@ -15,6 +16,9 @@ Quill.register(Font, true);
 
 
 const Write = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const editorRef = useRef(null);
   const quillRef = useRef(null);
   const [content, setContent] = useState("");
@@ -36,6 +40,47 @@ const Write = () => {
 
   const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
+  // Fetch post data if in edit mode
+  useEffect(() => {
+    if (!id) {
+      setTitle("");
+      setSummary("");
+      setCategory("");
+      setTagsInput("");
+      setFrontImagePreview(null);
+      setFrontImageFile(null);
+      setContent("");
+      if (quillRef.current) {
+        quillRef.current.root.innerHTML = "";
+      }
+      return;
+    }
+
+    const loadPostData = async () => {
+      try {
+        const post = await getPostById(id);
+        setTitle(post.title || "");
+        setSummary(post.summary || "");
+        setCategory(post.category || "");
+        setTagsInput(post.tags ? post.tags.join(", ") : "");
+        setFrontImagePreview(post.frontImage || null);
+        setContent(post.content || "");
+      } catch (err) {
+        toast.error("Failed to load post data");
+        console.error(err);
+      }
+    };
+
+    loadPostData();
+  }, [id]);
+
+  // Set Quill content when it is fetched
+  useEffect(() => {
+    if (quillRef.current && content && (quillRef.current.root.innerHTML === "<p><br></p>" || quillRef.current.root.innerHTML === "")) {
+      quillRef.current.root.innerHTML = content;
+    }
+  }, [content]);
+
   // Handles the built-in Quill image button: pick file -> upload -> insert URL
   const imageHandler = () => {
     const input = document.createElement("input");
@@ -55,6 +100,7 @@ const Write = () => {
       }
     };
   };
+
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
       quillRef.current = new Quill(editorRef.current, {
@@ -84,7 +130,8 @@ const Write = () => {
       });
     }
   }, []);
-    const handleFrontImageChange = (e) => {
+
+  const handleFrontImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
     setFrontImageFile(file);
@@ -98,7 +145,7 @@ const Write = () => {
     }
     setSaving(true);
     try {
-      let frontImageUrl = "";
+      let frontImageUrl = frontImagePreview || "";
       if (frontImageFile) {
         frontImageUrl = await uploadImage(frontImageFile);
       }
@@ -108,7 +155,7 @@ const Write = () => {
         .map((t) => t.trim())
         .filter(Boolean);
 
-      await createPost({
+      const postData = {
         title,
         summary,
         category,
@@ -117,12 +164,34 @@ const Write = () => {
         frontImage: frontImageUrl,
         isDraft,
         isPublic: !isDraft,
-      });
+      };
 
-      toast.success(isDraft ? "Draft saved" : "Post published");
-      // reset or navigate away here, e.g. navigate("/")
+      if (id) {
+        await updatePost(id, postData);
+        toast.success(isDraft ? "Draft updated" : "Post updated");
+      } else {
+        await createPost(postData);
+        toast.success(isDraft ? "Draft saved" : "Post published");
+      }
+
+      navigate("/");
     } catch (err) {
       toast.error("Something went wrong saving your post");
+      console.error(err);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete this journal entry?")) return;
+    setSaving(true);
+    try {
+      await deletePost(id);
+      toast.success("Post deleted successfully");
+      navigate("/");
+    } catch (err) {
+      toast.error("Failed to delete post");
       console.error(err);
     } finally {
       setSaving(false);
@@ -134,6 +203,9 @@ const Write = () => {
       <Sidebar />
       <div className={`write-container ${theme}`}>
         <div className="editor-card">
+          <div className="editor-header">
+            <h2>{id ? "Edit Journal Entry" : "Create New Entry"}</h2>
+          </div>
 
           {/* TITLE ROW */}
           <div className="form-row">
@@ -202,11 +274,16 @@ const Write = () => {
 
           {/* BUTTONS */}
           <div className="actions">
+            {id && (
+              <button className="delete-btn" disabled={saving} onClick={handleDelete}>
+                Delete Entry
+              </button>
+            )}
             <button className="draft-btn" disabled={saving} onClick={() => handleSubmit(true)}>
-              Save as Draft
+              {id ? "Update Draft" : "Save as Draft"}
             </button>
             <button className="post-btn" disabled={saving} onClick={() => handleSubmit(false)}>
-              Post
+              {id ? "Update Post" : "Post"}
             </button>
           </div>
 
