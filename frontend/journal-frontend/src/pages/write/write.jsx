@@ -183,7 +183,9 @@ const Write = () => {
     }
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    if (e) e.preventDefault();
+    console.log("Delete button clicked for post ID:", id);
     if (!window.confirm("Are you sure you want to delete this journal entry?")) return;
     setSaving(true);
     try {
@@ -275,14 +277,14 @@ const Write = () => {
           {/* BUTTONS */}
           <div className="actions">
             {id && (
-              <button className="delete-btn" disabled={saving} onClick={handleDelete}>
+              <button type="button" className="delete-btn" disabled={saving} onClick={handleDelete}>
                 Delete Entry
               </button>
             )}
-            <button className="draft-btn" disabled={saving} onClick={() => handleSubmit(true)}>
+            <button type="button" className="draft-btn" disabled={saving} onClick={() => handleSubmit(true)}>
               {id ? "Update Draft" : "Save as Draft"}
             </button>
-            <button className="post-btn" disabled={saving} onClick={() => handleSubmit(false)}>
+            <button type="button" className="post-btn" disabled={saving} onClick={() => handleSubmit(false)}>
               {id ? "Update Post" : "Post"}
             </button>
           </div>
