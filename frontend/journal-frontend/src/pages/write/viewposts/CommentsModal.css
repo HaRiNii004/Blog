@@ -1,0 +1,204 @@
+/* Modal Backdrop */
+.comments-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(58, 44, 37, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Box */
+.comments-modal-content {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 48px rgba(58, 44, 37, 0.15);
+  width: 90%;
+  max-width: 650px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(30px); }
+  to { transform: translateY(0); }
+}
+
+/* Modal Header */
+.comments-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.comments-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 80%;
+}
+
+.comments-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.comments-modal-close:hover {
+  color: var(--color-accent-dark);
+}
+
+/* Modal Body / Comments list */
+.comments-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comments-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.comments-modal-body::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+/* Comment Item inside Modal */
+.admin-comment-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-comment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.admin-comment-author {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.admin-comment-likes {
+  font-weight: 600;
+  color: #ef4444;
+  background: #fff5f5;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+
+.admin-comment-text {
+  font-size: 13.5px;
+  color: var(--color-text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Replies stack */
+.admin-replies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 16px;
+  border-left: 2px solid var(--color-border);
+  padding-left: 12px;
+}
+
+.admin-reply-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.admin-reply-author {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+  margin-bottom: 2px;
+}
+
+.admin-reply-text {
+  font-size: 12.5px;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Reply writing form */
+.admin-reply-form {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-reply-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.admin-reply-input:focus {
+  border-color: var(--color-accent);
+}
+
+.admin-reply-btn {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-reply-btn:hover {
+  background-color: var(--color-accent-dark);
+}

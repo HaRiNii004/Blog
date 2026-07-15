@@ -22,14 +22,17 @@ export const deletePost = async (id) => {
   return res.data;
 };
 
-// TODO: replace this once the backend upload route exists.
-// For now it just fakes a delay and returns a local blob URL so you can
-// keep building the UI without the backend being ready.
 export const uploadImage = async (file) => {
-  // Real version (once backend exists) will look like:
   const formData = new FormData();
   formData.append("image", file);
   const res = await api.post("/upload", formData);
   return res.data.url;
+};
 
+export const replyToComment = async (postId, commentId, replyContent) => {
+  const res = await api.post(`/posts/${postId}/comments/${commentId}/replies`, {
+    content: replyContent,
+    author: "Author"
+  });
+  return res.data;
 };

@@ -4,8 +4,8 @@ import "./navbar.css";
 const NAV_LINKS = [
     { to: "/h", label: "Home" },
     { to: "/about", label: "About" },
-    // { to: "/blogs", label: "Writing" },
-    // { to: "/contact", label: "Contact" },
+    { to: "/writing", label: "Writing" },
+
 ];
 const Topbar = () => {
     return (

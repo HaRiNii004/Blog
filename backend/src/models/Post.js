@@ -39,7 +39,22 @@ const postSchema = new mongoose.Schema({
         type: String, // Stores the blog body (Text, HTML for images/videos)
         required: true
     },
-    
+    comments: [
+        {
+            author: { type: String, required: true },
+            content: { type: String, required: true },
+            likes: { type: Number, default: 0 },
+            createdAt: { type: Date, default: Date.now },
+            replies: [
+                {
+                    author: { type: String, default: "Author" },
+                    content: { type: String, required: true },
+                    likes: { type: Number, default: 0 },
+                    createdAt: { type: Date, default: Date.now }
+                }
+            ]
+        }
+    ]
 }, {
     // This option automatically adds 'createdAt' and 'updatedAt' fields
     // 'updatedAt' will update whenever you edit the post
