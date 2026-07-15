@@ -5,6 +5,7 @@ const NAV_LINKS = [
     { to: "/h", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/writing", label: "Writing" },
+    { to: "/reading", label: "Reading" },
 
 ];
 const Topbar = () => {

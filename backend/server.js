@@ -6,6 +6,7 @@ require("dotenv").config();
 const connectDB = require("./src/config/db.js"); // Adjust the path if needed
 const postRoutes = require("./src/routes/posts.routes.js");
 const uploadRoutes = require("./src/routes/uploadRoutes.js");
+const readingRoutes = require("./src/routes/reading.routes.js");
 const errorHandler = require("./src/middleware/errorHandler.js");
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/posts", postRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/reading", readingRoutes);
 
 // Error handler (should be after routes)
 app.use(errorHandler);

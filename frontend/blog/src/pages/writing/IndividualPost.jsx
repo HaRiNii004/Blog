@@ -1,7 +1,7 @@
 import React from "react";
 import CommentsSection from "./CommentsSection";
 
-const IndividualPost = ({ post, onClose, onRefreshPost, API_URL }) => {
+const IndividualPost = ({ post, onClose, onRefreshPost, API_URL, backText = "Back to Writing" }) => {
   const formatImageUrl = (url) => {
     if (!url) return null;
     if (url.startsWith("http://") || url.startsWith("https://")) return url;
@@ -25,7 +25,7 @@ const IndividualPost = ({ post, onClose, onRefreshPost, API_URL }) => {
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          Back to Writing
+          {backText}
         </button>
 
         <div className="post-detail-layout">

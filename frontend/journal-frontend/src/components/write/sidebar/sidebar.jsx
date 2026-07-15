@@ -7,6 +7,7 @@ import {
   Plus,
   Layers,
   Settings,
+  BookOpen,
 } from "lucide-react";
 import "./sidebar.css";
 
@@ -32,6 +33,7 @@ const Sidebar = () => {
   const menuItems = [
     { icon: LayoutDashboard, label: "posts", path: "/" },
     { icon: Plus, label: "create", path: "/createnew" },
+    { icon: BookOpen, label: "reading", path: "/reading-manage" },
 
   ];
 

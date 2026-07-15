@@ -36,3 +36,18 @@ export const replyToComment = async (postId, commentId, replyContent) => {
   });
   return res.data;
 };
+
+export const getReadingItems = async () => {
+  const res = await api.get("/reading");
+  return res.data;
+};
+
+export const createOrUpdateReadingItem = async (readingData) => {
+  const res = await api.post("/reading", readingData);
+  return res.data;
+};
+
+export const deleteReadingItem = async (id) => {
+  const res = await api.delete(`/reading/${id}`);
+  return res.data;
+};
